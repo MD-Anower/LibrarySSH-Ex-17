@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <package name="default" namespace="/" extends="struts-default">
+  
+    <action name="userAction_*" class="userAction" method="{1}">
+          <result name="add">/success.jsp</result>
+          <result name="register">/login.jsp</result>
+          <result name="registerError" >/register.jsp</result>
+          <result name="loginSuccess" type="redirect" >/index.jsp</result>
+          <result name="loginFail" type="redirect">/login.jsp</result>
+          <result name="signOut" type="redirect">/login.jsp</result>
+          
+          <result name="findAll">/userList.jsp</result>
+          <result name="operSuccess" type="redirectAction">
+                    <param name="actionName">userAction_list</param>   
+          </result>
+          <result name="showAdd">/userAdd.jsp</result>
+          
+          
+    </action>
+    
+    <!-- BookCategoryAction -->
+    
+    <action name="bookCategoryAction_*" class="bookCategoryAction" method="{1}">
+          <result name="findAll">/bookCategoryList.jsp</result>
+          <result name="operSuccess" type="redirectAction">
+                    <param name="actionName">bookCategoryAction_list</param>   
+          </result>
+    </action>
+    
+     <!-- BookAction -->
+    
+    <action name="bookAction_*" class="bookAction" method="{1}">
+          <result name="findAll">/bookList.jsp</result>
+          <result name="operSuccess" type="redirectAction">
+                    <param name="actionName">bookAction_list</param>   
+          </result>
+          <result name="showAdd">/bookAdd.jsp</result>
+          <result name="showEdit">/bookEdit.jsp</result>
+          <result name="search">/bookSearch.jsp</result>
+    </action>
+    
+    <!-- StudentAction -->
+    
+    <action name="studentAction_*" class="studentAction" method="{1}">
+          <result name="findAll">/studentList.jsp</result>
+          <result name="operSuccess" type="redirectAction">
+                    <param name="actionName">studentAction_list</param>   
+          </result>
+          
+    </action>
+    </package>
+</struts>    

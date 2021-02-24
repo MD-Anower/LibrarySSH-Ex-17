@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd" xmlns:tx="http://www.springframework.org/schema/tx">
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	
+	<!-- UserConfig -->
+	
+	<bean id="userDao" class="dao.UserDao"></bean>
+	<bean id="userService" class="service.UserService">
+	<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="userAction" class="action.UserAction">
+	   <property name="userService" ref="userService"></property>
+	</bean>
+	
+	<!-- BookCategoryConfig -->
+	
+	<bean id="bookCategoryDao" class="dao.BookCategoryDao"></bean>
+	<bean id="bookCategoryService" class="service.BookCategoryService">
+	       <property name="bookCategoryDao" ref="bookCategoryDao"></property>
+	</bean>
+	<bean id="bookCategoryAction" class="action.BookCategoryAction">
+	       <property name="bookCategoryService" ref="bookCategoryService"></property>
+	</bean>
+	
+	<!-- BookConfig -->
+	
+	<bean id="bookDao" class="dao.BookDao"></bean>
+	<bean id="bookService" class="service.BookService">
+	       <property name="bookDao" ref="bookDao"></property>
+	</bean>
+	<bean id="bookAction" class="action.BookAction">
+	       <property name="bookService" ref="bookService"></property>
+	       <property name="bookCategoryService" ref="bookCategoryService"></property>
+	</bean>
+	
+	<!-- StudentConfig -->
+	
+	<bean id="studentDao" class="dao.StudentDao"></bean>
+	<bean id="studentService" class="service.StudentService">
+	       <property name="studentDao" ref="studentDao"></property>
+	</bean>
+	<bean id="studentAction" class="action.StudentAction">
+	       <property name="studentService" ref="studentService"></property>
+	</bean>
+	
+	</beans>
